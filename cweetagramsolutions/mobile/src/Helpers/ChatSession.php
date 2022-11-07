@@ -21,7 +21,9 @@ class ChatSession
             $session = Model::create([
                 'sessionid' => $sessionid,
                 'code' => $code,
-                'msisdn' => $msisdn
+                'msisdn' => $msisdn,
+                'step' => 1,
+                'process' => 1
             ]);
         }
         return $session;
