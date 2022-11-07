@@ -1,0 +1,17 @@
+{
+    "name": "cweetagramsolutions/mobile",
+    "description": "This package contains all the connections to cweetagram's providers for outbound mobile connections",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Cweetagramsolutions\\Mobile\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cweetagram Solutions pty ltd"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

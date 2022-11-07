@@ -1,0 +1,55 @@
+version: '3'
+
+networks:
+  cweetagram-mobile:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
+
+services:
+  app:
+    build:
+      args:
+        user: cweetagram-mobile
+        uid: 1000
+      context: ./.docker/app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+      - ./.docker/app/php.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - cweetagram-mobile
+
+  cweetagram-mobile-web:
+    image: nginx
+    container_name: cweetagram-mobile-web
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    networks:
+      - cweetagram-mobile
+    volumes:
+      - ./:/var/www
+      - ./.docker/nginx:/etc/nginx/conf.d
+
+
+  cweetagram-mobile-db:
+    networks:
+      - cweetagram-mobile
+    image: mariadb
+    container_name: cweetagram-mobile-db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mariadb
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
