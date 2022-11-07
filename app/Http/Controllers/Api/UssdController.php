@@ -18,9 +18,9 @@ class UssdController extends Controller
 
             return response()->json([
                 'msisdn' => $request->msisdn,
-                'code' => 200,
+                'code' => "200",
                 'menuText' => "Welcome to the Chibuku Super Campaign\nPlease enter the last 4 digits of your product barcode",
-                'getInput' => true
+                'getInput' => "true"
             ]);
         }
 
@@ -30,9 +30,9 @@ class UssdController extends Controller
 
             return response()->json([
                 'msisdn' => $request->msisdn,
-                'code' => 200,
+                'code' => "200",
                 'menuText' => "Please enter your age below?\n1.18-25\n2.26-30\n3.31-35\n4.35-40\n5.41+",
-                'getInput' => true
+                'getInput' => "true"
             ]);
         }
 
@@ -42,9 +42,9 @@ class UssdController extends Controller
 
             return response()->json([
                 'msisdn' => $request->msisdn,
-                'code' => 200,
+                'code' => "200",
                 'menuText' => "Which region do you reside from?\n1. GP\n2. Limpopo\n3. MP\n4. KZN\n5. WCape\n6. FState\n7. NCape\n8. ECape\n9. NWest",
-                'getInput' => true
+                'getInput' => "true"
             ]);
         }
 
@@ -54,9 +54,9 @@ class UssdController extends Controller
 
             return response()->json([
                 'msisdn' => $request->msisdn,
-                'code' => 200,
+                'code' => "200",
                 'menuText' => "Thank you for your entry, You've been entered into the draw to Stand a chance of winning daily, weekly and grand prizes. Keep your till slip. T's and C's apply",
-                'getInput' => false
+                'getInput' => "false"
             ]);
         }
     }

@@ -14,13 +14,16 @@ class ChatSession
      */
     public static function findLastSession(string $sessionid, string $code, string $msisdn)
     {
-        $session = Model::firstOrCreate([
-            'sessionid' => $sessionid,
-            'code' => $code,
-            'msisdn' => $msisdn,
-            'state' => Model::STARTED_STATE
-        ]);
-
+        $session = Model::where('sessionid', $sessionid)
+            ->where('state', Model::STARTED_STATE)
+            ->first();
+        if ($session === null) {
+            $session = Model::create([
+                'sessionid' => $sessionid,
+                'code' => $code,
+                'msisdn' => $msisdn
+            ]);
+        }
         return $session;
     }
 
