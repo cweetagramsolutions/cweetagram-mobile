@@ -8,11 +8,11 @@ class CweetagramMobileServiceProvider extends \Illuminate\Support\ServiceProvide
 {
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/cweetagram_mobile.php', 'cweetagramsolutions');
+        $this->mergeConfigFrom(__DIR__.'/../Config/cweetagram_mobile.php', 'cweetagramsolutions');
     }
 }
