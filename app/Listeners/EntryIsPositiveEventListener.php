@@ -19,7 +19,7 @@ class EntryIsPositiveEventListener
      */
     public function handle($event)
     {
-        $airtime_winner_frequency = 1;
+        $airtime_winner_frequency = 5;
         $airtime_amount = 1500;
         $daily_total_winners = 10;
         $log = $event->log;
