@@ -2,6 +2,8 @@
 
 namespace Cweetagramsolutions\Mobile\Providers;
 
+use Cweetagramsolutions\Mobile\Commands\PushInfobipMessages;
+use Cweetagramsolutions\Mobile\Commands\PushMobisysRecharges;
 use \Illuminate\Support\ServiceProvider;
 
 class CweetagramMobileServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -9,6 +11,12 @@ class CweetagramMobileServiceProvider extends \Illuminate\Support\ServiceProvide
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                PushInfobipMessages::class,
+                PushMobisysRecharges::class,
+            ]);
+        }
     }
 
     public function register()

@@ -15,9 +15,17 @@ class RechargeHelper
         'CellC' => '1fa967c9-e1bd-422c-a49a-1cc8e06c6929'
     ];
 
-    public static function recharge($id, $msisdn, $network, $amount_in_cents, $recharge_type = 1)
+    /**
+     * @param $id
+     * @param $msisdn
+     * @param $product_code
+     * @param $amount_in_cents
+     * @param $recharge_type
+     * @return string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function recharge($id, $msisdn, $product_code, $amount_in_cents, $recharge_type = 1)
     {
-        $product_code = self::$product_codes[$network];
         $recharge_data['UserAccount'] = array(
             'UserName' => config('cweetagramsolutions.airtime_account'),
             'Password' => config('cweetagramsolutions.airtime_account_password')
@@ -51,6 +59,14 @@ class RechargeHelper
         } catch (ClientException $e) {
             return $e->getResponse()->getBody()->getContents();
         }
+    }
 
+    /**
+     * @param $network
+     * @return string
+     */
+    public static function getProductCode($network)
+    {
+        return $product_code = self::$product_codes[$network];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace CweetagramSolutions\Mobile\Helpers;
+namespace Cweetagramsolutions\Mobile\Helpers;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
