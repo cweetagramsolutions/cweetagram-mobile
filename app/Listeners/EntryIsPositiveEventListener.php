@@ -19,15 +19,15 @@ class EntryIsPositiveEventListener
      */
     public function handle($event)
     {
-        $airtime_winner_frequency = 5;
+        $airtime_winner_frequency = config('app.winner_frequency');
         $airtime_amount = 1500;
-        $daily_total_winners = 10;
+        $daily_total_winners = config('app.daily_winner_total');
         $log = $event->log;
         if ($log->id % $airtime_winner_frequency === 0) {
             $start_date = now()->startOfDay();
             $end_date = now()->endOfDay();
 
-            $can_reward_airtime = MobisysRecharge::whereBetween('created_at', [$start_date, $end_date])->count() < 10;
+            $can_reward_airtime = MobisysRecharge::whereBetween('created_at', [$start_date, $end_date])->count() < $daily_total_winners;
             if ($can_reward_airtime) {
                 InfobipoutboundMessage::create([
                     'uid' => $log->sessionid,

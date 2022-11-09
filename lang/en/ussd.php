@@ -9,5 +9,5 @@ return [
     'cell_phone' => "Congratulations, you have won a OPPO Cellphone and will be contacted for more details on redeeming your reward. T's and C's apply",
     'barcodes' => "Welcome to the Chibuku Super Campaign\nPlease enter the last 4 digits of your product barcode",
     'age' => "Please enter your age below?\n1.18-25\n2.26-30\n3.31-35\n4.35-40\n5.41+",
-    'location' => "Which region do you reside from?\n1. GP\n2. Limpopo\n3. MP\n4. KZN\n5. WCape\n6. FState\n7. NCape\n8. ECape\n9. NWest"
+    'location' => "Which region do you reside from?\n1. GP\n2. LMP\n3. MP\n4. KZN\n5. WCape\n6. FState\n7. NCape\n8. ECape\n9. NWest"
 ];

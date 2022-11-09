@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Africa/Johannesburg',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,6 +96,9 @@ return [
     */
 
     'fallback_locale' => 'en',
+
+    'winner_frequency' => env('WINNER_FREQUENCY', 2),
+    'daily_winner_total' => env('DAILY_WINNER_TOTAL', 10),
 
     /*
     |--------------------------------------------------------------------------
