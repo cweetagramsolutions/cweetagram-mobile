@@ -198,6 +198,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \Cweetagramsolutions\Mobile\Providers\CweetagramMobileServiceProvider::class,
+        \Spatie\Permission\PermissionServiceProvider::class,
+        \Yajra\DataTables\DataTablesServiceProvider::class
 
     ],
 
