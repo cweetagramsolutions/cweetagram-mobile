@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\UnbUssdLog;
 use App\Models\UnbUssdSurvey;
+use Cweetagramsolutions\Mobile\Models\MobisysRecharge;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -27,6 +28,15 @@ class DashboardDataSetController extends Controller
         }
 
         return response()->json($data);
+    }
+
+    public function airtime()
+    {
+        return datatables()->of(MobisysRecharge::orderBy('id', 'desc'))
+            ->editColumn('provider_response', function ($recharge) {
+                return view('partials.dashboard.provider_response', ['log' => $recharge]);
+            })
+            ->make(true);
     }
 
     /**

@@ -24,3 +24,4 @@ Route::get('dataset/daily/{month}', [\App\Http\Controllers\Api\DashboardDataSetC
 Route::get('dataset/list/entries', [\App\Http\Controllers\Api\DashboardDataSetController::class, 'entriesList']);
 Route::get('dataset/age/stats', [\App\Http\Controllers\Api\DashboardDataSetController::class, 'ageStats']);
 Route::get('dataset/region/stats', [\App\Http\Controllers\Api\DashboardDataSetController::class, 'regionStats']);
+Route::get('dataset/recharge/datatable', [\App\Http\Controllers\Api\DashboardDataSetController::class, 'airtime']);

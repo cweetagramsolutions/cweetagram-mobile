@@ -7,6 +7,7 @@
         @include('partials.dashboard.entries_table')
         @include('partials.dashboard.daily')
         @include('partials.dashboard.survey')
+        @include('partials.dashboard.airtime')
     </div>
 </div>
 @endsection
@@ -46,6 +47,22 @@
                     {data: 'network', value: 'network'},
                     {data: 'barcode_input', value: 'barcode_input'},
                     {data: 'state', value: 'state'},
+                ]
+            });
+
+            $('#airtimeTable').DataTable({
+                serverSide: true,
+                processing: true,
+                order: [],
+                ajax: {
+                    url: '{!! url('api/dataset/recharge/datatable') !!}'
+                },
+                columns: [
+                    {data: 'created_at', value: 'created_at'},
+                    {data: 'msisdn', value: 'msisdn'},
+                    {data: 'amount_in_cents', value: 'amount_in_cents'},
+                    {data: 'state', value: 'state'},
+                    {data: 'provider_response', value: 'provider_response'},
                 ]
             })
         });

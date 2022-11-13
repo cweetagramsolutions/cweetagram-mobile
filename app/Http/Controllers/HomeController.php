@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cweetagramsolutions\Mobile\Models\MobisysRecharge;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $recharge = MobisysRecharge::selectRaw('SUM(amount_in_cents) as total_airtime')->first();
+        $total_airtime = $recharge ? $recharge->total_airtime/100 : 0;
+
+        return view('home', compact('total_airtime'));
     }
 }
