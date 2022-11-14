@@ -6,6 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        <div class="float-right">
+                            <a href="{{ url('/home') }}">Back</a>
+                        </div>
                         <h3>Draw winners</h3>
                     </div>
                     <div class="card-body">
