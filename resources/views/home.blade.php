@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12">
+            <a href="{{ route('winners.index') }}" class="btn btn-primary">Winner draws</a>
+        </div>
         @include('partials.dashboard.counter')
         @include('partials.dashboard.entries_table')
         @include('partials.dashboard.daily')

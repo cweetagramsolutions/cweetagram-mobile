@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body class="control-sidebar-slide-open sidebar-collapse">
 <!-- Site wrapper -->
@@ -31,6 +32,11 @@
             </div>
         </section>
         <section class="content">
+            @if(session('error'))
+                <div class="alert alert-danger text-center">
+                    {{ session('error') }}
+                </div>
+            @endif
             @yield('content')
         </section>
     </div>

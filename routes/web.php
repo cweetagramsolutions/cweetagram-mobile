@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'winners'], function () {
+    Route::get('/', [\App\Http\Controllers\WinnersController::class, 'index'])->name('winners.index');
+    Route::post('/', [\App\Http\Controllers\WinnersController::class, 'postDraw'])->name('winners.draw.post');
+    Route::get('/draw/{id}', [\App\Http\Controllers\WinnersController::class, 'draw'])->name('winners.draw');
+    Route::get('/export/draw/{id}', [\App\Http\Controllers\WinnersController::class, 'export'])->name('winners.draw.export');
+    Route::put('/draw/state/{id}', [\App\Http\Controllers\WinnersController::class, 'updateState'])->name('winners.draw.update_state');
+});
