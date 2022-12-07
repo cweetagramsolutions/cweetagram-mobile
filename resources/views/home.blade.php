@@ -3,10 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-12 mb-3">
             <a href="{{ route('winners.index') }}" class="btn btn-primary">Winner draws</a>
         </div>
         @include('partials.dashboard.counter')
+        @include('partials.dashboard.export_entries')
         @include('partials.dashboard.entries_table')
         @include('partials.dashboard.daily')
         @include('partials.dashboard.survey')
@@ -17,6 +18,14 @@
 
 @section('scripts')
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $('.datepicker').datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
     <script type="text/javascript">
         $(function () {
             loadDailyEntries('11');
@@ -73,7 +82,6 @@
         function loadSurveyStats(stat)
         {
             $.get('{!! url('api/dataset') !!}/' + stat + '/stats' , function (data) {
-
                 let ctx = document.getElementById('surveyGraph').getContext('2d');
                 let visitorsChart = new Chart(ctx, {
                     type: 'bar',

@@ -18,6 +18,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/home/entries/export', [App\Http\Controllers\HomeController::class, 'export'])->name('home.entries.export');
 
 Route::group(['prefix' => 'winners'], function () {
     Route::get('/', [\App\Http\Controllers\WinnersController::class, 'index'])->name('winners.index');
