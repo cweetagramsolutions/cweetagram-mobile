@@ -74,7 +74,7 @@ class DashboardDataSetController extends Controller
     {
         return datatables()->of(UnbUssdLog::orderBy('id', 'desc'))
             ->editColumn('created_at', function ($log) {
-                return date('Y-m-d h:i A', strtotime($log->created_at));
+                return date('Y-m-d H:i:s', strtotime($log->created_at));
             })
             ->editColumn('state', function ($log) {
                 return ucfirst($log->state);
