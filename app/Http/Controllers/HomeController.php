@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AirtimeRecharges;
 use App\Exports\EntriesExport;
 use Carbon\Carbon;
 use Cweetagramsolutions\Mobile\Models\MobisysRecharge;
@@ -45,5 +46,10 @@ class HomeController extends Controller
             ->format('Y-m-d');
 
         return Excel::download(new EntriesExport($request->start_date, $end_date), time() . '.xlsx');
+    }
+
+    public function exportAirtime()
+    {
+        return Excel::download(new AirtimeRecharges(), sprintf('airtime_download%s.%s', time(), '.xlsx'));
     }
 }
