@@ -74,7 +74,9 @@
                     {data: 'msisdn', value: 'msisdn'},
                     {data: 'amount_in_cents', value: 'amount_in_cents'},
                     {data: 'state', value: 'state'},
-                    {data: 'provider_response', value: 'provider_response'},
+                    @if(auth()->user()->email === 'chancel@cweetagram.co.za')
+                        {data: 'provider_response', value: 'provider_response'},
+                    @endif
                 ]
             })
         });

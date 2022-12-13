@@ -21,7 +21,9 @@
                         <th>Cell number</th>
                         <th>Amount</th>
                         <th>Status</th>
-                        <th>Provider response</th>
+                        @if(auth()->user()->email === 'chancel@cweetagram.co.za')
+                            <th>Provider response</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>

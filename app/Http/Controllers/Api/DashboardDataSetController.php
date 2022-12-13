@@ -36,6 +36,12 @@ class DashboardDataSetController extends Controller
             ->editColumn('provider_response', function ($recharge) {
                 return view('partials.dashboard.provider_response', ['log' => $recharge]);
             })
+            ->editColumn('created_at', function ($recharge) {
+                return date('Y-m-d H:i:s', strtotime($recharge->created_at));
+            })
+            ->editColumn('state', function () {
+                return 'Sent';
+            })
             ->make(true);
     }
 
