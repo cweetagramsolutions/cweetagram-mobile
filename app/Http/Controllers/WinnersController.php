@@ -49,7 +49,8 @@ class WinnersController extends Controller
         if ($potential_winners->count()) {
             $i = 0;
             foreach($potential_winners as $potential_winner) {
-                if ($i < $request->number_of_winners) {
+                $exists = UnbUssdWinner::where('msisdn', '<>', $potential_winner->msisdn)->count() > 0;
+                if (($i < $request->number_of_winners) && ($exists === false)) {
                     UnbUssdWinner::create([
                         'draw_id' => $draw->id,
                         'sessionid' => $potential_winner->sessionid,
