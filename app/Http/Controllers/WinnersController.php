@@ -44,17 +44,18 @@ class WinnersController extends Controller
         $potential_winners = UnbUssdLog::where('state', UnbUssdLog::POSITIVE_STATE)
             ->whereBetween('created_at', [$request->start_date, date('Y-m-d', strtotime($request->end_date . ' + 1 day'))])
             ->whereNotIn('msisdn', $past_winners)
-            ->limit($request->number_of_winners)
             ->get();
 
         if ($potential_winners->count()) {
+            $i = 0;
             foreach($potential_winners as $potential_winner) {
-                if (UnbUssdWinner::where('msisdn', $potential_winner->msisdn)->count() === 0) {
+                if ($i < $request->number_of_winners) {
                     UnbUssdWinner::create([
                         'draw_id' => $draw->id,
                         'sessionid' => $potential_winner->sessionid,
                         'msisdn' => $potential_winner->msisdn
                     ]);
+                    $i++;
                 }
             }
 
