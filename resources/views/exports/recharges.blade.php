@@ -13,7 +13,7 @@
                 <td>{{ $recharge->created_at }}</td>
                 <td>{{ $recharge->msisdn }}</td>
                 <td>{{ $recharge->amount_in_cents / 100 }}</td>
-                <td>{{ ucfirst($recharge->state) }}</td>
+                <td>{{ 'Sent' }}</td>
             </tr>
         @endforeach
     </tbody>
