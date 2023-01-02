@@ -51,13 +51,17 @@ class DashboardDataSetController extends Controller
      */
     public function dailyCounts($month)
     {
-        $start_date = Carbon::create('2022', $month, '01');
-        $end_date = Carbon::create('2022', $month, '01')->addMonth()->format('Y-m-d');
+        $year = '2022';
+        if ($month == '01') {
+            $year = '2023';
+        }
+        $start_date = Carbon::create($year, $month, '01');
+        $end_date = Carbon::create($year, $month, '01')->addMonth()->format('Y-m-d');
         $data[] = DB::table('unb_ussd_logs')->whereBetween('created_at', [$start_date->format('Y-m-d'), Carbon::create('2022', $month, '01')->addDay()->format('Y-m-d')])
             ->count();
         $date_data[] = $start_date->format('d M');
-        $start = Carbon::create('2022', $month, '01')->addDay();
-        $end = Carbon::create('2022', $month, '01')->addDays(2);
+        $start = Carbon::create($year, $month, '01')->addDay();
+        $end = Carbon::create($year, $month, '01')->addDays(2);
         do {
             $date_data[] = $start->format('d M');
             $data[] = DB::table('unb_ussd_logs')->whereBetween('created_at', [$start->format('Y-m-d'), $end->format('Y-m-d')])

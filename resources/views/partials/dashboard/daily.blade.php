@@ -5,6 +5,7 @@
                 <select class="form-control" name="dailyMonth">
                     <option value="11">November</option>
                     <option value="12">December</option>
+                    <option value="01">January</option>
                 </select>
             </div>
             <h3>Daily entries</h3>
