@@ -14,6 +14,14 @@ class UssdController extends Controller
 {
     public function __invoke(Request $request)
     {
+        if (time() > strtotime('2023-01-05 00:00:00')) {
+            return response()->json([
+                'menuText' => __('ussd.end'),
+                'getInput' => "false",
+                'code' => "200",
+                'msisdn' => $request->msisdn
+            ]);
+        }
         $session = ChatSession::findLastSession($request->sessionid, $request->shortcode, $request->msisdn);
 
         if ($session->process == 1 && $session->step == 1) {
